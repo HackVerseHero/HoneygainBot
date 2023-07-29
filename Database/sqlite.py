@@ -1,5 +1,4 @@
 import sqlite3
-
 from Database.baseStorage import BaseStorage
 
 
@@ -22,8 +21,6 @@ class SQLiteStorage(BaseStorage):
         try:
             connection.execute(set_query, (param, data))
             connection.commit()
-        except:
-            raise "Database error"
         finally:
             connection.close()
 
@@ -37,8 +34,6 @@ class SQLiteStorage(BaseStorage):
             data = rows[0][0]
             connection.commit()
             return data
-        except:
-            raise "Database error"
         finally:
             connection.close()
 
@@ -46,9 +41,11 @@ class SQLiteStorage(BaseStorage):
         connection = sqlite3.connect(self.database)
         update_query = f'''UPDATE {table} SET timestamp = ? WHERE param_name = ?'''
         try:
-            connection.execute(update_query, (data, param,))
+            with connection:
+                cursor = connection.cursor()
+                cursor.execute(update_query, (data, param,))
+                if cursor.rowcount == 0:
+                    raise ValueError("Failed to update data in the database.")
             connection.commit()
-        except:
-            raise "Database error"
         finally:
             connection.close()
