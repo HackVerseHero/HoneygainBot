@@ -35,7 +35,6 @@ services:
       - 8088:80
     restart: always
 </pre>
-</p>
 
 The PyHoneygain library has provided us with simplicity and convenience in interacting with the Honeygain platform API, enabling us to effectively utilize its functional capabilities in our project. We would like to extend our special thanks to <a href="https://github.com/coder-amogh">coder-amogh</a>, the author of PyHoneygain, for their contribution. You can find the library at: https://github.com/coder-amogh/pyHoneygain.
 
