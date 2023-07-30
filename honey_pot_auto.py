@@ -139,7 +139,6 @@ class HoneypotCatchBot:
                 message = await HoneyGaneMessages.opened_earlier(winning_credits=winning_credits)
                 await self.handler(message)
             return True
-        #
 
     async def open_honeypot(self):
         try:
