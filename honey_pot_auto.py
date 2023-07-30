@@ -6,14 +6,13 @@ from colorama import Fore
 
 
 class HoneypotCatchBot:
-    def __init__(self, user, password, storage, handler=None, wait_to_recheck_status=1, awake_to_catch_time=6):
+    def __init__(self, user, password, storage, handler=None, wait_to_recheck_status=1):
         self.storage = storage
         self.handler = handler
         self.user = user
         self.password = password
         self.honeygain_user = HoneyGain()
         self.wait_to_recheck_status = wait_to_recheck_status
-        self.awake_to_catch_time = awake_to_catch_time
 
     async def wait(self, awake_time):
         awake_to_catch_time = awake_time
