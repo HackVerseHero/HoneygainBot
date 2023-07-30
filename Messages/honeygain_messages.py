@@ -1,6 +1,6 @@
 class HoneyGaneMessages:
-
     service_unavailable = "The service is currently unavailable. Try later."
+
     @staticmethod
     async def build_statistics_message(wallet_stats, stats_today, stats_today_jt):
         days = list(wallet_stats['data'].keys())
